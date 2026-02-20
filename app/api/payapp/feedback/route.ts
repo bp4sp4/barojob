@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     if (state === '1' || (state === null && mul_no)) {
       // 결제 성공 → DB 업데이트
       const { error } = await supabaseAdmin
-        .from('practice_applications')
+        .from('employment_applications')
         .update({
           payment_status: 'paid',
           payment_id: mul_no || undefined,
@@ -46,8 +46,8 @@ export async function POST(request: NextRequest) {
         try {
           // 신청자 정보 조회
           const { data: appData } = await supabaseAdmin
-            .from('practice_applications')
-            .select('name, contact, practice_type')
+            .from('employment_applications')
+            .select('name, contact, desired_job_field')
             .eq('id', var1)
             .single();
 
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
                   fields: [
                     { type: 'mrkdwn', text: `*이름:*\n${appData?.name || '-'}` },
                     { type: 'mrkdwn', text: `*연락처:*\n${appData?.contact || '-'}` },
-                    { type: 'mrkdwn', text: `*실습 유형:*\n${appData?.practice_type || '-'}` },
+                    { type: 'mrkdwn', text: `*취업 희망분야:*\n${appData?.desired_job_field || '-'}` },
                     { type: 'mrkdwn', text: `*결제금액:*\n${priceFormatted}원` },
                     { type: 'mrkdwn', text: `*결제수단:*\n${payMethodLabel}` },
                     { type: 'mrkdwn', text: `*결제번호:*\n${mul_no || '-'}` },
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
     } else {
       // 결제 실패
       await supabaseAdmin
-        .from('practice_applications')
+        .from('employment_applications')
         .update({ payment_status: 'failed' })
         .eq('id', var1);
 

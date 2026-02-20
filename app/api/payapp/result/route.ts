@@ -15,7 +15,7 @@ async function handleResult(
     // 결제 성공 → DB 업데이트
     if (var1) {
       await supabaseAdmin
-        .from('practice_applications')
+        .from('employment_applications')
         .update({
           payment_status: 'paid',
           payment_id: mul_no || undefined,
@@ -118,7 +118,7 @@ async function handleResult(
     // 결제 실패
     if (var1) {
       await supabaseAdmin
-        .from('practice_applications')
+        .from('employment_applications')
         .update({ payment_status: 'failed' })
         .eq('id', var1);
     }

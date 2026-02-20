@@ -45,7 +45,7 @@ const formatClickSource = (
   };
 
   const shortSource = sourceMap[utmSource] || utmSource;
-  const homepageName = "실습섭외신청";
+  const homepageName = "취업지원신청";
 
   if (blogId) return `${homepageName}_${shortSource}_${blogId}`;
   if (cafeId) return `${homepageName}_${shortSource}_${cafeId}`;
@@ -73,17 +73,9 @@ function ClickSourceHandler({
   return null;
 }
 
-const PRACTICE_TYPES = [
-  "사회복지사 실습 160시간",
-  "사회복지사 실습 120시간",
-  "보육교사 실습 240시간",
-  "평생교육사 실습 160시간",
-  "한국어교원 실습",
-];
-
 const EMPLOYMENT_TYPES = ["정규직", "계약직", "파트타임", "부업"];
 
-function PracticeFormContent({ clickSource }: { clickSource: string }) {
+function EmploymentFormContent({ clickSource }: { clickSource: string }) {
   const [step, setStep] = useState(2);
   const [formData, setFormData] = useState({
     name: "",
@@ -93,7 +85,6 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
     address: "",
     address_detail: "",
     zonecode: "",
-    practice_type: "",
     desired_job_field: "",
     employment_types: [] as string[],
     has_resume: "",
@@ -174,9 +165,7 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
     formData.contact.replace(/[-\s]/g, "").length >= 10 &&
     !contactError;
   const showAddress = showBirthDate && formData.birth_date.length >= 6;
-  const showPracticeType = showAddress && formData.address.length > 0;
-  const showDesiredJobField =
-    showPracticeType && formData.practice_type.length > 0;
+  const showDesiredJobField = showAddress && formData.address.length > 0;
   const showEmploymentTypes =
     showDesiredJobField && formData.desired_job_field.trim().length > 0;
   const showHasResume =
@@ -191,14 +180,13 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
     formData.contact.replace(/[-\s]/g, "").length >= 10 && !contactError,
     formData.birth_date.length >= 6,
     formData.address.length > 0,
-    formData.practice_type.length > 0,
     formData.desired_job_field.trim().length > 0,
     formData.employment_types.length > 0,
     formData.has_resume.length > 0,
     privacyAgreed,
     termsAgreed,
   ].filter(Boolean).length;
-  const totalFields = 11;
+  const totalFields = 10;
   const progress = (filledFields / totalFields) * 100;
 
   const isFormValid =
@@ -208,7 +196,6 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
     !contactError &&
     formData.birth_date.length >= 6 &&
     formData.address.length > 0 &&
-    formData.practice_type.length > 0 &&
     formData.desired_job_field.trim().length > 0 &&
     formData.employment_types.length > 0 &&
     formData.has_resume.length > 0 &&
@@ -227,7 +214,6 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
         address: formData.address,
         address_detail: formData.address_detail || null,
         zonecode: formData.zonecode || null,
-        practice_type: formData.practice_type,
         desired_job_field: formData.desired_job_field,
         employment_types: formData.employment_types,
         has_resume: formData.has_resume === "보유함",
@@ -238,7 +224,7 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
         click_source: clickSource,
       };
 
-      const response = await fetch("/api/practice", {
+      const response = await fetch("/api/employment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(submitData),
@@ -322,7 +308,7 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
               </div>
 
               <div className={styles.step2Title}>
-                <h1 className={styles.step2TitleText}>실습 섭외 신청</h1>
+                <h1 className={styles.step2TitleText}>취업지원 신청</h1>
               </div>
 
               {/* 이름 */}
@@ -489,38 +475,8 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
                     />
                   )}
                   <p className={styles.addressNote}>
-                    *학교/거주지 근처로 실습처 신청이 진행됩니다
+                    *거주지 근처로 취업지원 신청이 진행됩니다
                   </p>
-                </motion.div>
-              )}
-
-              {/* 실습 유형 */}
-              {showPracticeType && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={styles.inputGroup}
-                >
-                  <label className={styles.inputLabel}>
-                    실습 유형<span className={styles.required}>*</span>
-                  </label>
-                  <select
-                    className={styles.selectField}
-                    value={formData.practice_type}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        practice_type: e.target.value,
-                      })
-                    }
-                  >
-                    <option value="">유형을 선택하세요</option>
-                    {PRACTICE_TYPES.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
                 </motion.div>
               )}
 
@@ -734,7 +690,7 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
                 className={styles.step3Image}
               />
               <h1 className={styles.title}>
-                결제가 완료되었습니다.{"\n"}실습 섭외 신청이{"\n"}정상적으로
+                결제가 완료되었습니다.{"\n"}취업지원 신청이{"\n"}정상적으로
                 접수되었습니다.
               </h1>
             </motion.div>
@@ -779,13 +735,13 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
                 <div className={styles.modalPrivacyScroll}>
                   <p className={styles.modalPrivacyItem}>
                     <strong>1. 개인정보 수집 및 이용 목적</strong>
-                    실습 섭외 신청 처리, 실습처 배정 안내, 결제 처리 및 문의사항
+                    취업지원 신청 처리, 취업지원 안내, 결제 처리 및 문의사항
                     응대. 개인정보는 서비스 제공을 위한 목적으로만 수집 및
                     이용되며, 동의 없이 제3자에게 제공되지 않습니다.
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>2. 수집 및 이용하는 개인정보 항목</strong>
-                    필수 - 이름, 성별, 연락처, 생년월일, 주소, 실습유형, 취업
+                    필수 - 이름, 성별, 연락처, 생년월일, 주소, 취업
                     희망분야, 고용형태, 이력서 보유 여부
                   </p>
                   <p className={styles.modalPrivacyItem}>
@@ -842,13 +798,12 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
                 <div className={styles.modalPrivacyScroll}>
                   <p className={styles.modalPrivacyItem}>
                     <strong>제1조 (목적)</strong>본 약관은 한평생교육(이하
-                    &quot;회사&quot;)이 제공하는 실습 섭외 신청 서비스의 이용
+                    &quot;회사&quot;)이 제공하는 취업지원 신청 서비스의 이용
                     조건 및 절차에 관한 사항을 규정합니다.
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>제2조 (서비스 내용)</strong>
-                    회사는 사회복지사, 보육교사, 평생교육사, 한국어교원 등 자격
-                    취득을 위한 실습 섭외 및 배정 서비스를 제공합니다.
+                    회사는 취업을 희망하는 고객에게 취업지원 서비스를 제공합니다.
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>제3조 (이용자의 의무)</strong>
@@ -904,12 +859,12 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
                 <div className={styles.modalPrivacyScroll}>
                   <p className={styles.modalPrivacyItem}>
                     <strong>결제 안내</strong>
-                    실습 섭외 신청 비용은 110,000원입니다.
+                    취업지원 신청 비용은 110,000원입니다.
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>환불 규정</strong>
-                    결제 후 실습처 배정 전: 전액 환불 가능 실습처 배정 후: 환불
-                    불가
+                    결제 후 취업지원 배정 전: 전액 환불 가능 취업지원 배정 후:
+                    환불 불가
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>결제 수단</strong>
@@ -931,7 +886,7 @@ function PracticeFormContent({ clickSource }: { clickSource: string }) {
 }
 
 export default function Page() {
-  const [clickSource, setClickSource] = useState("");
+  const [clickSource, setClickSource] = useState("취업신청");
   const handleSourceChange = useCallback((source: string) => {
     setClickSource(source);
   }, []);
@@ -939,7 +894,7 @@ export default function Page() {
   return (
     <Suspense fallback={<div />}>
       <ClickSourceHandler onSourceChange={handleSourceChange} />
-      <PracticeFormContent clickSource={clickSource} />
+      <EmploymentFormContent clickSource={clickSource} />
     </Suspense>
   );
 }
