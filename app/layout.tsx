@@ -17,25 +17,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "한평생교육 실습 무료상담",
-  description: "한평생교육 실습 무료상담",
+  title: "한평생교육 취업 신청",
+  description: "한평생교육 취업 신청",
   openGraph: {
-    title: "한평생교육 실습 무료상담",
-    description: "한평생교육 실습 무료상담",
+    title: "한평생교육 취업 신청",
+    description: "한평생교육 취업 신청",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "한평생교육 실습 무료상담",
+        alt: "한평생교육 취업 신청",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "한평생교육 실습 무료상담",
-    description: "한평생교육 실습 무료상담",
+    title: "한평생교육 취업 신청",
+    description: "한평생교육 취업 신청",
     images: ["/og-image.png"],
   },
 };
