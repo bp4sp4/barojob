@@ -218,7 +218,7 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
         employment_types: formData.employment_types,
         has_resume: formData.has_resume === "보유함",
         certifications: formData.certifications || null,
-        payment_amount: 110000,
+        payment_amount: 220000,
         privacy_agreed: privacyAgreed,
         terms_agreed: termsAgreed,
         click_source: clickSource,
@@ -408,7 +408,7 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                   </label>
                   <input
                     type="text"
-                    placeholder="생년월일 6자리를 입력해주세요 (ex. YYMMDD(예: 730104))"
+                    placeholder="생년월일 6자리를 입력해주세요"
                     className={styles.inputField}
                     value={formData.birth_date}
                     maxLength={6}
@@ -610,7 +610,7 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                 >
                   <div className={styles.paymentBox}>
                     <span className={styles.paymentLabel}>결제 금액</span>
-                    <span className={styles.paymentAmount}>110,000원</span>
+                    <span className={styles.paymentAmount}>220,000원</span>
                   </div>
 
                   <div className={styles.agreementSection}>
@@ -656,7 +656,9 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                           className={styles.agreementLink}
                         >
                           결제유의사항
-                        </button>
+                        </button>{" "}
+                        동의{" "}
+                        <span className={styles.requiredBadge}>(필수)</span>
                       </span>
                     </label>
                   </div>
@@ -741,8 +743,8 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>2. 수집 및 이용하는 개인정보 항목</strong>
-                    필수 - 이름, 성별, 연락처, 생년월일, 주소, 취업
-                    희망분야, 고용형태, 이력서 보유 여부
+                    필수 - 이름, 성별, 연락처, 생년월일, 주소, 취업 희망분야,
+                    고용형태, 이력서 보유 여부
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>3. 보유 및 이용 기간</strong>
@@ -803,7 +805,8 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>제2조 (서비스 내용)</strong>
-                    회사는 취업을 희망하는 고객에게 취업지원 서비스를 제공합니다.
+                    회사는 취업을 희망하는 고객에게 취업지원 서비스를
+                    제공합니다.
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>제3조 (이용자의 의무)</strong>
@@ -859,7 +862,7 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                 <div className={styles.modalPrivacyScroll}>
                   <p className={styles.modalPrivacyItem}>
                     <strong>결제 안내</strong>
-                    취업지원 신청 비용은 110,000원입니다.
+                    취업지원 신청 비용은 220,000원입니다.
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>환불 규정</strong>

@@ -1,0 +1,117 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-02-24T05:05:50.687Z",
+  "activeFeatures": [
+    "employment",
+    "korhrdsocialjob",
+    "feedback"
+  ],
+  "primaryFeature": "employment",
+  "features": {
+    "employment": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-24T03:57:09.568Z",
+        "lastUpdated": "2026-02-24T03:57:22.165Z"
+      },
+      "lastFile": "/Users/korhrd/Documents/GitHub/korhrdsocialjob/app/api/employment/route.ts"
+    },
+    "korhrdsocialjob": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-24T03:57:27.197Z",
+        "lastUpdated": "2026-02-24T05:05:50.687Z"
+      },
+      "lastFile": "/Users/korhrd/Documents/GitHub/korhrdsocialjob/app/page.tsx"
+    },
+    "feedback": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-24T03:57:39.760Z",
+        "lastUpdated": "2026-02-24T03:57:39.760Z"
+      },
+      "lastFile": "/Users/korhrd/Documents/GitHub/korhrdsocialjob/app/api/payapp/feedback/route.ts"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-02-23T05:31:45.925Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-02-24T05:05:50.687Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-02-24T03:57:09.568Z",
+      "feature": "employment",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:12.431Z",
+      "feature": "employment",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:13.497Z",
+      "feature": "employment",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:22.165Z",
+      "feature": "employment",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:27.197Z",
+      "feature": "korhrdsocialjob",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:28.738Z",
+      "feature": "korhrdsocialjob",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:30.311Z",
+      "feature": "korhrdsocialjob",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T03:57:39.760Z",
+      "feature": "feedback",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-24T05:05:50.687Z",
+      "feature": "korhrdsocialjob",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}

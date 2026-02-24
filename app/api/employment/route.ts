@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
           employment_types,
           has_resume,
           certifications: certifications || null,
-          payment_amount: payment_amount || 110000,
+          payment_amount: payment_amount || 220000,
           payment_status: 'pending',
           privacy_agreed: privacy_agreed || false,
           terms_agreed: terms_agreed || false,
@@ -154,7 +154,7 @@ export async function POST(request: NextRequest) {
           linkkey: process.env.PAYAPP_LINK_KEY,
           shopname: process.env.PAYAPP_SHOP_NAME || '한평생교육',
           goodname: `한평생교육 취업지원 신청`,
-          price: '110000',
+          price: '220000',
           recvphone,
           memo: name,
           feedbackurl: `${baseUrl}/api/payapp/feedback`,
@@ -163,9 +163,9 @@ export async function POST(request: NextRequest) {
           skip_cstpage: 'y',
           smsuse: 'n',
           openpaytype: 'card,kakaopay,naverpay,payco,applepay,myaccount',
-          amount_taxable: '100000',
+          amount_taxable: '200000',
           amount_taxfree: '0',
-          amount_vat: '10000',
+          amount_vat: '20000',
         });
 
         const payappRes = await fetch('https://api.payapp.kr/oapi/apiLoad.html', {
@@ -222,7 +222,7 @@ export async function POST(request: NextRequest) {
           { type: 'mrkdwn', text: `*취업 희망분야:*\n${desired_job_field}` },
           { type: 'mrkdwn', text: `*고용형태:*\n${employment_types.join(', ')}` },
           { type: 'mrkdwn', text: `*이력서 보유:*\n${has_resume ? '보유함' : '보유하지 않음'}` },
-          { type: 'mrkdwn', text: `*결제금액:*\n110,000원` },
+          { type: 'mrkdwn', text: `*결제금액:*\n220,000원` },
         ];
 
         if (certifications) {

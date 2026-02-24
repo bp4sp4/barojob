@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
             myaccount: '내통장결제',
           };
           const payMethodLabel = paymethod ? (payMethodMap[paymethod] || paymethod) : '미확인';
-          const priceFormatted = price ? Number(price).toLocaleString('ko-KR') : '110,000';
+          const priceFormatted = price ? Number(price).toLocaleString('ko-KR') : '220,000';
 
           await fetch(process.env.SLACK_WEBHOOK_URL, {
             method: 'POST',
