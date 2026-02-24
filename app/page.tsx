@@ -874,10 +874,6 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                     신용카드, 체크카드, 계좌이체 등 다양한 결제 수단을
                     지원합니다.
                   </p>
-                  <p className={styles.modalPrivacyItem}>
-                    <strong>영수증 발급</strong>
-                    결제 완료 후 이메일로 영수증이 발송됩니다.
-                  </p>
                 </div>
               </div>
             </div>
