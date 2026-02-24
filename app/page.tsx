@@ -743,8 +743,9 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>2. 수집 및 이용하는 개인정보 항목</strong>
-                    필수 - 이름, 성별, 연락처, 생년월일, 주소, 취업 희망분야,
-                    고용형태, 이력서 보유 여부
+                    필수 - 이름, 성별, 연락처(휴대전화번호), 생년월일, 주소, 취업
+                    희망분야, 고용형태, 자기소개서·이력서 보유 여부 / 선택 -
+                    상세주소, 보유중인 자격증
                   </p>
                   <p className={styles.modalPrivacyItem}>
                     <strong>3. 보유 및 이용 기간</strong>

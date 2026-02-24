@@ -727,6 +727,12 @@
   font-size: 13px;
 }
 
+.optionalBadge {
+  color: #8b95a1;
+  font-size: 13px;
+  margin-left: 4px;
+}
+
 /* 로딩 스피너 */
 .loadingContainer {
   display: flex;
