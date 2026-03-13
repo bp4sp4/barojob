@@ -157,21 +157,16 @@ function EmploymentFormContent({ clickSource }: { clickSource: string }) {
     }));
   };
 
-  // 프로그레시브 디스클로저 조건
-  const showGender = formData.name.trim().length > 0;
-  const showContact = showGender && formData.gender.length > 0;
-  const showBirthDate =
-    showContact &&
-    formData.contact.replace(/[-\s]/g, "").length >= 10 &&
-    !contactError;
-  const showAddress = showBirthDate && formData.birth_date.length >= 6;
-  const showDesiredJobField = showAddress && formData.address.length > 0;
-  const showEmploymentTypes =
-    showDesiredJobField && formData.desired_job_field.trim().length > 0;
-  const showHasResume =
-    showEmploymentTypes && formData.employment_types.length > 0;
-  const showCertifications = showHasResume && formData.has_resume.length > 0;
-  const showPayment = showCertifications;
+  // 모든 필드 한번에 표시
+  const showGender = true;
+  const showContact = true;
+  const showBirthDate = true;
+  const showAddress = true;
+  const showDesiredJobField = true;
+  const showEmploymentTypes = true;
+  const showHasResume = true;
+  const showCertifications = true;
+  const showPayment = true;
 
   // 프로그레스 바 계산
   const filledFields = [
